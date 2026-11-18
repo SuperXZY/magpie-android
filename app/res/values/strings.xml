@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">magpie</string>
+    <string name="channel_name">magpie 网关</string>
+    <string name="channel_desc">保持 magpie 本地网关在后台运行</string>
+    <string name="notif_title">magpie 正在运行</string>
+    <string name="notif_text">本地网关 127.0.0.1:3425</string>
+</resources>

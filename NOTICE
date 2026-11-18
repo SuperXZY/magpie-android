@@ -1,0 +1,41 @@
+# NOTICE
+
+magpie-android is an **unofficial** Android host for [yetone/magpie](https://github.com/yetone/magpie).
+It is not affiliated with, endorsed by, or supported by the magpie project.
+
+## What this repository contains
+
+Only the Android host is published here: ~1.2 k lines of Java, resources, build
+scripts and documentation. **No magpie source code is vendored.** The engine is
+compiled from the upstream repository at build time (see `docs/zh/02-build.md`).
+
+## Third-party components
+
+| Component | License | How it is used |
+| --- | --- | --- |
+| [yetone/magpie](https://github.com/yetone/magpie) | MIT, © 2026 yetone | The Go engine, cross-compiled to `android/arm64` and shipped inside the APK as `lib/arm64-v8a/libmagpie.so`. Unmodified source. |
+| [Bun](https://github.com/oven-sh/bun) (`bun-linux-aarch64-android`) | MIT, © Oven | Bundled into the APK as `lib/arm64-v8a/libbun.so` so that magpie plugins can run. Not modified. Pinned by the same SHA-256 that magpie itself verifies. |
+| Android SDK / NDK toolchain | Apache-2.0 / their own terms | Build-time only, not redistributed. |
+
+`resources.arsc`, `classes.dex` and `AndroidManifest.xml` are produced from this
+repository's own sources.
+
+## What is deliberately *not* included
+
+- **No `dsh-go` APK, no decompiled dsh-go code, no dsh-go assets.** Chapter
+  `docs/zh/07-reverse-engineering.md` only describes *interoperability facts*
+  (process model, ports, config file layout) needed to make two apps on the same
+  phone talk to each other. Reverse engineering for interoperability is
+  documented; redistributing someone else's binary is not done here.
+- **No credentials.** No API keys, no OAuth tokens, no subscription cookies. The
+  gateway's local token is the literal string `magpie`, which is magpie's own
+  documented loopback default, not a secret.
+- **No signing key.** `keystore.jks` is git-ignored; each builder generates their
+  own (see `docs/zh/02-build.md`). Release APKs are signed with the maintainer's
+  key and carry the certificate fingerprint published in the release notes.
+
+## Trademarks
+
+"magpie", "Bun", "Android", "DeepSeek", "Claude", "ChatGPT", "Gemini",
+"Copilot" and any other product names are trademarks of their respective owners
+and are used here only for descriptive purposes.

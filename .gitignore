@@ -1,0 +1,25 @@
+# build output
+build/
+app/build/
+*.idsig
+
+# engine binaries (175 MB, build them yourself - see docs/zh/02-build.md)
+app/jniLibs/
+*.so
+
+# signing material - never commit a private key
+app/keystore.jks
+*.jks
+*.keystore
+
+# local toolchain / scratch
+work/
+toolchain/
+node_modules/
+
+# OS / editor noise
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp

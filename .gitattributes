@@ -1,0 +1,7 @@
+# keep the working tree stable across Windows/Linux
+* text=auto eol=lf
+
+*.ps1 text eol=crlf
+*.png binary
+*.jks binary
+*.apk binary
