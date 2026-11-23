@@ -18,10 +18,10 @@ phone
 
 | | |
 | --- | --- |
-| Engine | upstream `magpie` @ `50c5a52` (`VERSION` = v0.1.4386), **source unmodified** |
-| Host | 4 Java files, ~1.2 k LOC, zero dependencies, no Gradle |
-| Output | `magpie.apk`, 69.9 MB, `minSdk 26` / `targetSdk 34`, `arm64-v8a` only |
-| Package | `ai.usemagpie.android`, `versionCode 1` |
+| Engine | upstream `magpie` v0.1.4722 (`3ad5454`), **source unmodified** |
+| Host | 7 Java files, ~2.5 k LOC, zero dependencies, no Gradle |
+| Output | `magpie.apk`, 76.6 MB, `minSdk 26` / `targetSdk 34`, `arm64-v8a` only |
+| Package | `ai.usemagpie.android`, `versionCode 5` (1.1.0) |
 
 > Chinese documentation is the primary one and much more detailed:
 > **[README.zh-CN.md](README.zh-CN.md)** · [`docs/zh/`](docs/zh/)
@@ -74,6 +74,16 @@ In dsh-go: **Settings → Models → Add channel → OpenAI-compatible**
 
 Details and the exact `cordis.patch.yml` shape:
 [`docs/zh/04-dsh-go-integration.md`](docs/zh/04-dsh-go-integration.md).
+
+## In-app updates
+
+The engine lives in the APK's `lib/` directory, which is read-only after install
+(Android 10+ W^X only lets that path be executed). It cannot be hot-swapped, so
+staying in step with the desktop release train means updating the whole APK.
+The **Version & updates** card checks GitHub, shows how far the bundled engine
+lags upstream (`yetone/magpie-releases`), downloads the new `magpie.apk`,
+verifies its SHA-256 against the release asset's `digest`, then hands it to
+`PackageInstaller` — no root, no FileProvider, no storage permission.
 
 ## The four Android traps
 
@@ -152,6 +162,7 @@ foreground-service survival on vendor ROMs still need a phone.
 | [`docs/zh/06-troubleshooting.md`](docs/zh/06-troubleshooting.md) | Install / start / plugin / login decision trees |
 | [`docs/zh/07-reverse-engineering.md`](docs/zh/07-reverse-engineering.md) | dsh-go package layout (interoperability notes) |
 | [`docs/zh/08-roadmap.md`](docs/zh/08-roadmap.md) | 32-bit, slimming, device testing, CI |
+| [`docs/zh/09-in-app-update.md`](docs/zh/09-in-app-update.md) | In-app update: why whole-APK, verification, install |
 
 ## Credits & disclaimer
 

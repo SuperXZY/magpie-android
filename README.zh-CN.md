@@ -14,10 +14,10 @@ Claude Code / Codex 那样，从一个本地网关拿到任意的模型渠道。
 
 | | |
 | --- | --- |
-| 引擎 | 上游 `magpie` @ `50c5a52`（`VERSION` = v0.1.4386），**源码未改** |
-| 宿主 | 4 个 Java 文件，约 1.2 k 行，零第三方依赖，不用 Gradle |
-| 产物 | `magpie.apk`，69.9 MB，`minSdk 26` / `targetSdk 34` / 仅 `arm64-v8a` |
-| 包名 | `ai.usemagpie.android`，`versionCode 1` |
+| 引擎 | 上游 `magpie` **v0.1.4722**（`3ad5454`），源码未改 |
+| 宿主 | 7 个 Java 文件，约 2.5 k 行，零第三方依赖，不用 Gradle |
+| 产物 | `magpie.apk`，76.6 MB，`minSdk 26` / `targetSdk 34` / 仅 `arm64-v8a` |
+| 包名 | `ai.usemagpie.android`，`versionCode 5`（1.1.0） |
 
 ## 目录
 
@@ -289,6 +289,7 @@ Linux / macOS 的等价命令、`libbun.so` 的下载与校验、CGO 环境变�
 | [`docs/zh/06-troubleshooting.md`](docs/zh/06-troubleshooting.md) | 装不上 / 起不来 / 插件失败 / 登录无反应的排查树 |
 | [`docs/zh/07-reverse-engineering.md`](docs/zh/07-reverse-engineering.md) | dsh-go 包结构、PRoot 运行时、dsh 配置位置（互操作性分析） |
 | [`docs/zh/08-roadmap.md`](docs/zh/08-roadmap.md) | 待办：32 位、瘦身、真机验证、CI |
+| [`docs/zh/09-in-app-update.md`](docs/zh/09-in-app-update.md) | 应用内更新：为什么整包、校验与安装链路 |
 
 ## 致谢与免责
 

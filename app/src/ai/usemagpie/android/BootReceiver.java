@@ -15,9 +15,7 @@ public class BootReceiver extends BroadcastReceiver {
             return;
         }
         Magpie.init(context);
-        boolean auto = context.getSharedPreferences(Magpie.PREFS, Context.MODE_PRIVATE)
-                .getBoolean("autostart", true);
-        if (auto) {
+        if (Magpie.autostart(context)) {
             MagpieService.start(context);
         }
     }

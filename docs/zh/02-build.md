@@ -182,7 +182,7 @@ python -c "import zipfile;z=zipfile.ZipFile(r'build\magpie.apk');print([ (i.file
 期望：
 
 ```
-package: name='ai.usemagpie.android' versionCode='1' versionName='1.0.0'
+package: name='ai.usemagpie.android' versionCode='5' versionName='1.1.0'
 targetSdkVersion:'34'
 native-code: 'arm64-v8a'
 [('AndroidManifest.xml', 8), ('resources.arsc', 0)]     ← 0 = ZIP_STORED

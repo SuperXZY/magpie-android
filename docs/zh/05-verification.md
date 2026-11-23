@@ -21,7 +21,13 @@
 
 引擎起来后逐个打。凭证用 `?k=<webKey>` 换来的 Cookie（与 WebView 里完全同一条链路）。
 
-### 读接口（22 个，全部 200）
+> **1.1.0 复测（引擎 v0.1.4722，2026-11-23）**：下面的清单来自 1.0.0。上游六天里
+> 删改过路由，按同一批路径重打，18 个里 15 个仍是 200，`/api/gateway`、
+> `/api/gateway/keys`、`/api/proxy` 已在上游被移除（404）。`/api/state` 体积从
+> 14 KB 涨到 22 KB；`?k=` → 303 + `Set-Cookie: magpie_web_<port>`（Max-Age 400 天）
+> 的登录链路不变，`/v1/models` 正常返回模型目录。
+
+### 读接口（1.0.0 时为 22 个，全部 200）
 
 ```
 /api/state              /api/settings          /api/providers        /api/groups
@@ -112,7 +118,7 @@ POST /v1/chat/completions  {"model":"mock-model","messages":[{"role":"user","con
 
 ```
 aapt2 dump badging
-  package: name='ai.usemagpie.android' versionCode='1' versionName='1.0.0'
+  package: name='ai.usemagpie.android' versionCode='5' versionName='1.1.0'
   targetSdkVersion: 34
   native-code: 'arm64-v8a'
   launchable-activity: ai.usemagpie.android.MainActivity
