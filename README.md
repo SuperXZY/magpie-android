@@ -163,6 +163,7 @@ foreground-service survival on vendor ROMs still need a phone.
 | [`docs/zh/07-reverse-engineering.md`](docs/zh/07-reverse-engineering.md) | dsh-go package layout (interoperability notes) |
 | [`docs/zh/08-roadmap.md`](docs/zh/08-roadmap.md) | 32-bit, slimming, device testing, CI |
 | [`docs/zh/09-in-app-update.md`](docs/zh/09-in-app-update.md) | In-app update: why whole-APK, verification, install |
+| [`docs/zh/10-gemini-subscription.md`](docs/zh/10-gemini-subscription.md) | Gemini on a phone: why the CLI subscription is dead, how Gemini Web works |
 
 ## Credits & disclaimer
 

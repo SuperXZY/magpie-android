@@ -290,6 +290,7 @@ Linux / macOS 的等价命令、`libbun.so` 的下载与校验、CGO 环境变�
 | [`docs/zh/07-reverse-engineering.md`](docs/zh/07-reverse-engineering.md) | dsh-go 包结构、PRoot 运行时、dsh 配置位置（互操作性分析） |
 | [`docs/zh/08-roadmap.md`](docs/zh/08-roadmap.md) | 待办：32 位、瘦身、真机验证、CI |
 | [`docs/zh/09-in-app-update.md`](docs/zh/09-in-app-update.md) | 应用内更新：为什么整包、校验与安装链路 |
+| [`docs/zh/10-gemini-subscription.md`](docs/zh/10-gemini-subscription.md) | 手机上的 Gemini：CLI 订阅已不可用，Gemini Web 怎么跑起来 |
 
 ## 致谢与免责
 
