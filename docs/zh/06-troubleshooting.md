@@ -215,6 +215,49 @@ npm 源不通。检查 `settings.json` 里的 `npmRegistry`，以及
 
 ---
 
+## D2. 供应商登录报「has no build for android arm64」
+
+有些「订阅」供应商不是纯协议实现，而是**包装一个厂商的桌面 CLI**：点登录时
+magpie 先跑厂商的安装脚本把 CLI 拉下来，找到可执行文件之后才开始 OAuth。
+Android arm64 上这些厂商没有构建，于是第一步就失败——界面停在「登录未完成」，
+看起来像点了没反应。
+
+两种典型原文：
+
+```
+installing Antigravity CLI failed
+  (Antigravity CLI has no build for android arm64)
+
+No official AIStudio2API CLI archive for android/arm64.
+```
+
+| 供应商 | 依赖的 CLI | 手机上有解吗 |
+| --- | --- | --- |
+| Antigravity（agy-cli） | `agy`（Google，只有 macOS/Linux/Windows） | 无，也没提供远程模式 |
+| Google AI Studio | AIStudio2API（有 Windows x64） | **有**，见下 |
+| Grok → Grok Build / Devin / Cursor CLI | 各自厂商的 CLI | 无 |
+
+### Google AI Studio 的例外
+
+它的供应商设置里有两个不用本地 CLI 的模式（报错文案自己也会提示）：
+
+- **连接已有 AIStudio2API（地址 + API key）**：在电脑上跑 AIStudio2API（官方有
+  Windows x64 包），手机里填电脑的局域网地址和 key。两个设备在同一 Wi-Fi 即可。
+- **指定 AIStudio2API 程序路径（高级）**：只在能运行该程序的平台上才有意义，
+  Android 上填什么路径都不会跑起来。
+
+### 想在这些供应商上用手机，只有两条路
+
+1. **电脑跑 magpie 桌面版**（agy / AIStudio 都能正常装），手机的 dsh-go 直接把
+   Base URL 指向电脑：`http://<电脑局域网 IP>:3425/v1`，Key 仍是 `magpie`。
+   手机端不用装任何 CLI。
+2. **换成不依赖本地二进制的供应商**：API Key（DeepSeek / Kimi / GLM / OpenRouter…）
+   或订阅登录（Claude / ChatGPT / Copilot / WorkBuddy）——这些是 magpie 自己用协议
+   实现的，不需要任何外部程序。
+
+> 顺带一句：`@magpie-community/opencode-antigravity-auth` 这个老插件已被上游下架
+> （Google 会封用它调 Code Assist 的账号），即使能装上也不建议使用。
+
 ## E. 点「登录」没反应
 
 这是坑 4。三层检查：
